@@ -63,6 +63,10 @@ public class GamePanel extends JPanel implements ActionListener {
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
+            //draw score
+            g.setFont(new Font("Calibri", Font.BOLD, 30));
+            FontMetrics metricsScore = getFontMetrics(g.getFont());
+            g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metricsScore.stringWidth("Score: " + applesEaten)-30), 30);
         } else {
             gameOver(g);
         }
@@ -130,7 +134,16 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
     public void gameOver(Graphics g) {
+        //draw game over
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Calibri", Font.BOLD, 70));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString("Game Over", (SCREEN_WIDTH - metrics.stringWidth("Game Over"))/2, SCREEN_HEIGHT/2);
 
+        //draw score
+        g.setFont(new Font("Calibri", Font.BOLD, 50));
+        FontMetrics metricsScore = getFontMetrics(g.getFont());
+        g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metricsScore.stringWidth("Score: " + applesEaten))/2, SCREEN_HEIGHT/3);
     }
 
     @Override
